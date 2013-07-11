@@ -1,75 +1,260 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>CVD Final Project by FabioMaster</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="CVD Final Project : " />
 
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>CVD Final Project</title>
   </head>
+
   <body>
-      <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/FabioMaster">View On GitHub</a></li>
-        </nav>
-      </div><!-- end header -->
 
-    <div class="wrapper">
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/FabioMaster">View on GitHub</a>
 
-      <section>
-        <div id="title">
-          <h1>CVD Final Project</h1>
-          <p></p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/FabioMaster">FabioMaster</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
-        </div>
+          <h1 id="project_title">CVD Final Project</h1>
+          <h2 id="project_tagline"></h2>
 
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+        </header>
+    </div>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="giuseppe-terragni" class="anchor" href="#giuseppe-terragni"><span class="octicon octicon-link"></span></a>GIUSEPPE TERRAGNI</h1>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<p><strong>Giuseppe Terragni</strong> (April 18, 1904 – July 19, 1943) was an Italian architect who worked primarily under the fascist regime of Benito Mussolini and pioneered the Italian modern movement under the rubric of Rationalism.
+His most famous work is the Casa del Fascio built in Como, northern Italy, which was begun in 1932 and completed in 1936; it was built in accordance with the International Style of architecture and frescoed by abstract artist Mario Radice. In 1938, at the behest of Mussolini's fascist government, Terragni designed the Danteum, a monument to the Italian poet Dante Alighieri structured around the formal divisions of his greatest work, the Divine Comedy. </p>
+
+<p><img src="http://spazioweb.inwind.it/alessandroarchi/Giuseppe_Terragni.jpg" alt="Giuseppe Terragni"></p>
+
+<p>For this final project I've draw some Terragni's operas like:</p>
+
+<ul>
+<li>The Novocomum Table</li>
+<li>The Chair for Sant'Elia nursery school</li>
+<li>A Library prototype</li>
+</ul><hr><h2>
+<a name="the-novocomum-table" class="anchor" href="#the-novocomum-table"><span class="octicon octicon-link"></span></a>The Novocomum Table</h2>
+
+<p>Coffee table in burr oak characterized by three tops. The Novocomum Table was part of the furniture designed by the Italian designer for the headquarters of the Federation of Farmers, building Novocomum.
+The cost of this table is about 2.000 Euro.</p>
+
+<p>This is the REAL table:</p>
+
+<p><img src="http://i39.tinypic.com/14bl56s.jpg" alt="Real Novocomum Table"></p>
+
+<p>And this is the table shape that I've draw:</p>
+
+<p><img src="http://i41.tinypic.com/30dl7di.png" alt="Shape of Novocomum Table"></p>
+
+<p>For this shape I've decided to produce it with a final function that draw all the model, inside this function there are some basilar component (cuboid and closed cylinders) created using the parameters gived to the function.</p>
+
+<p>To realize this shape I've used this functions:</p>
+
+<ol>
+<li>Circle</li>
+<li>Cylinder (edited for obtain close cylinders)</li>
+<li>Cuboid</li>
+<li>Color</li>
+<li>T</li>
+<li>R</li>
+<li>S</li>
+<li>Novocomum (writed for parameterize the shape)</li>
+</ol><p>The Novocomum function has as parameters the radius and the height of the table, then it produce a shape of the table.</p>
+
+<p>This is the code of the edited version of the cylinder function:</p>
+
+<pre><code>function CYLINDER(r,h){
+var domain1 = DOMAIN([[0,2*PI], [0,r]])([36,1]);
+var mapping = function(v){
+var a = v[0];
+var r = v[1];
+return [r*COS(a), r*SIN(a)];
+};
+var base = MAP(mapping)(domain1);
+var domain2 = DOMAIN([[-2*PI,2*PI]])([70]);
+var crc = circle(r);
+var model = MAP(crc)(domain2);
+var cil = EXTRUDE([h])(model);
+var cylinder = STRUCT([base,cil,T([2])([h])(base)]);
+return cylinder;
+};
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<p>Link to the source code: <a href="https://github.com/cvdlab-cg/420076/blob/master/final-project/javascript/novocomum.js">Novocomum Table</a></p>
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<hr><h2>
+<a name="the-chair-for-santelia-nursery-school" class="anchor" href="#the-chair-for-santelia-nursery-school"><span class="octicon octicon-link"></span></a>The Chair for Sant'Elia nursery school</h2>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>The Sant'Elia nursery furniture is the last Sant'Elia challenging for Terragni.
+This chair was used to furnish this nursery school</p>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<p>This is the REAL chair:</p>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<p><img src="http://www.ilquintuplo.it/wp-content/uploads/2012/11/3627_ciac_foligno_terragni_04_sedia.jpg" alt="REAL Sant'Elia nursery school chair"></p>
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<p>And this is the chair shape that I've draw:</p>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<p><img src="http://i39.tinypic.com/2pob9co.png" alt="Shape of Sant'Elia nursery school chair"></p>
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<p>For this model I've decided to draw all the model proceeding step-by-step starting from the top and ending to the bottom of the chair. The majority of the chair's support is realized using Bezier's curves.</p>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<p>To realize this shape I've used this functions:</p>
+
+<ol>
+<li>Circle</li>
+<li>Cylinder (edited for obtain close cylinders)</li>
+<li>Cuboid</li>
+<li>Color</li>
+<li>T</li>
+<li>R</li>
+<li>S</li>
+<li>Bezier</li>
+<li>Intervals</li>
+<li>Rotational_surface</li>
+</ol><p>The most difficult part of this chair shape, was to draw all the support for the chair. I've realized the back support for the backrest using Rotational_surface:</p>
+
+<pre><code>//BACK SUPPORT
+
+var p1 = [[2,0,2],[1.98,0,1.85],[1.78,0,1.85],[1.8,0,2]]
+var c1 = BEZIER(S0)(p1)
+var mapp1 = ROTATIONAL_SURFACE(c1)
+var s1 = MAP(mapp1)(rot_domain)
+
+
+var p2 = [[2,0,2],[1.98,0,2.15],[1.78,0,2.15],[1.8,0,2]]
+var c2 = BEZIER(S0)(p2)
+var mapp2 = ROTATIONAL_SURFACE(c2)
+var s2 = MAP(mapp2)(rot_domain)
+</code></pre>
+
+<p>The rest of the chair's support was realized using Bezier, because it's not possible to draw the support by turning it on a specific angle but it's necessary to draw it point-to-point with Bezier curves like this:</p>
+
+<pre><code>//ARMRESTS
+
+var p3 = [[2,-1,2],[1.98,-1,1.85],[1.78,-1,1.85],[1.8,-1,2]]
+var c3 = BEZIER(S0)(p3)
+
+var p4 = [[2,-1,2],[1.98,-1,2.15],[1.78,-1,2.15],[1.8,-1,2]]
+var c4 = BEZIER(S0)(p4)
+
+var s13 = BEZIER(S1)([c1,c3])
+var surf13 = MAP(s13)(Dom2D)
+
+var s24 = BEZIER(S1)([c2,c4])
+var surf24 = MAP(s24)(Dom2D)
+
+var sx_armrest = STRUCT([surf13,surf24])
+var dx_arst = R([0,1])([PI])(sx_armrest)
+var dx_armrest = T([1])([-1])(dx_arst)
+
+//FRONT TOP JUNCTIONS
+
+var p5 = [[2,-1.15,2],[2,-1,1.8],[1.8,-1,1.8],[1.8,-1.15,2]]
+var c5 = BEZIER(S0)(p5)
+
+var p6 = [[2,-1.15,2],[2,-1.3,2.1],[1.8,-1.3,2.1],[1.8,-1.15,2]]
+var c6 = BEZIER(S0)(p6)
+
+var p7 = [[2.02,-1.15,1.8],[2,-1,1.8],[1.8,-1,1.8],[1.78,-1.15,1.8]]
+var c7 = BEZIER(S0)(p7)
+
+var p8 = [[2.02,-1.15,1.8],[2,-1.3,1.8],[1.8,-1.3,1.8],[1.78,-1.15,1.8]]
+var c8 = BEZIER(S0)(p8)
+
+var s37 = BEZIER(S1)([c3,c5,c7])
+var surf37 = MAP(s37)(Dom2D)
+
+var s48 = BEZIER(S1)([c4,c6,c8])
+var surf48 = MAP(s48)(Dom2D)
+</code></pre>
+
+<p>Link to the source code: <a href="https://github.com/cvdlab-cg/420076/blob/master/final-project/javascript/sedia%20per%20asilo%20sant'elia.js">The Chair for Sant'Elia nursery school</a></p>
+
+<hr><h2>
+<a name="a-library-prototype" class="anchor" href="#a-library-prototype"><span class="octicon octicon-link"></span></a>A Library prototype</h2>
+
+<p>This prototype was drawing by Terragni, but never physically realized.
+This was the last Terragni's project before his death.</p>
+
+<p>This is the REAL library:</p>
+
+<p><img src="http://lightstorage.ecodibergamo.it/media/2009/09/89732_1081199_PROTOTIPO__8774885_medium.jpg" alt="REAL library prototype"></p>
+
+<p>And this is the library shape that I've draw:</p>
+
+<p><img src="http://i41.tinypic.com/rjktxe.png" alt="Shape of Sant'Elia nursery school chair"></p>
+
+<p>For this shape, I've decided to draw it using some functions created by me (Book_Spaces and Lateral_Shelfs) for drawing the majority of the model.
+The library legs are realized using Bezier's curves.</p>
+
+<p>To realize this shape I've used this functions:</p>
+
+<ol>
+<li>Cuboid</li>
+<li>Color</li>
+<li>T</li>
+<li>R</li>
+<li>Bezier</li>
+<li>Intervals</li>
+<li>Rotational_surface</li>
+<li>Book_Spaces (created for draw the spaces for the books)</li>
+<li>Lateral_Shelfs (created for draw the lateral shelfs)</li>
+</ol><p>For this shape, I've created two new functions called:</p>
+
+<ul>
+<li>
+<p>Book_Spaces </p>
+
+<pre><code>//Function that draw the library's book spaces
+
+function BOOK_SPACES(panel,n){
+var shelf_h1 = T([0,1])([2,-1])(CUBOID([5.1,0.1,1.5]))
+var level_1 = STRUCT([shelf_h1,panel])
+for (var i = k ; i &gt;= 0; i--) {
+    level_1 = STRUCT([level_1,T([0])([i])(panel)])
+};
+return level_1
+}
+</code></pre>
+</li>
+<li>
+<p>and Lateral_Shelfs.    </p>
+
+<pre><code>//Function that draw the library's lateral shelfs 
+
+function LATERAL_SHELFS(shelf_h0,n){
+var closing = T([1])([-0.75])(CUBOID([0.1,0.75,1.5]))
+var level_2 = STRUCT([shelf_h0,closing])
+for (var g = k-2 ; g &gt;= 0; g--) {
+    level_2 = STRUCT([level_2,T([1])([g*(-0.75)])    (STRUCT([shelf_h0,closing]))])
+};
+return level_2
+}
+</code></pre>
+</li>
+</ul><p>Link to the source code: <a href="https://github.com/cvdlab-cg/420076/edit/master/final-project/javascript/prototipo.js">The Library prototype</a></p>
+
+<hr><p>Link to the GitHub project: <a href="https://github.com/cvdlab-cg/420076/tree/master/final-project">GitHub project</a></p>
       </section>
-
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
     
+
   </body>
 </html>
